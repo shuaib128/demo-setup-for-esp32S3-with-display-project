@@ -1,6 +1,6 @@
 import struct
 
-def bmp_to_c_array(bmp_file, output_file):
+def bmp_to_c_array(bmp_file, output_file, image_data_name):
     with open(bmp_file, 'rb') as f:
         bmp_data = f.read()
 
@@ -18,7 +18,7 @@ def bmp_to_c_array(bmp_file, output_file):
 
     # Prepare the output file
     with open(output_file, 'w') as f:
-        f.write(f'const uint16_t image_data[{pixel_count}] = {{\n')
+        f.write(f'const uint16_t {image_data_name}[{pixel_count}] = {{\n')
 
         for i in range(pixel_count):
             pixel = pixel_data[i*2:i*2+2]
@@ -31,5 +31,3 @@ def bmp_to_c_array(bmp_file, output_file):
                 f.write('\n')
 
         f.write('\n};\n')
-
-bmp_to_c_array('output_image.bmp', 'image.h')

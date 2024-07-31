@@ -1,13 +1,14 @@
 #include <Arduino.h>
-#include <TFT_eSPI.h> // Hardware-specific library
-#include "image1.h"
-#include "image2.h"
-#include "image3.h"
-#include "image4.h"
+#include <TFT_eSPI.h>
+#include <WiFi.h>
+#include "images/0.h"
+#include "images/1.h"
+#include "images/2.h"
+#include "images/3.h"
 
 TFT_eSPI tft = TFT_eSPI();
 // Invoke custom library
-const uint16_t *images[] = {image_data_image1, image_data_image2, image_data_image3, image_data_image4};
+const uint16_t *images[] = {image_data0, image_data1, image_data2, image_data3};
 // Add other images as needed
 const int num_images = sizeof(images) / sizeof(images[0]);
 const int display_duration = 5000; // Display each image for 5000 milliseconds (5 seconds)
